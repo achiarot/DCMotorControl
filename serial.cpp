@@ -20,7 +20,12 @@ class Serial{
 };
 
 Serial::Serial(int baudRate=9600){
-
+    //setup the serial port registers
+    UCSR0A |= 0x40;  //0b01000000
+    UCSR0B |= 0x98;  //0b100110--
+    UCSR0C |= 0x26;  //0b00100110
+    UBRR0H |= 0x00;
+    UBRR0L |= 0x67;  //0b01100111
 }
 
 
